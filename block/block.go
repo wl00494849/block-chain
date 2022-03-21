@@ -9,7 +9,7 @@ import (
 
 type Block struct {
 	TimeStamp     int64
-	Data          []byte
+	Data          string
 	PrevBlockHask []byte
 	Hash          []byte
 }
@@ -21,7 +21,7 @@ type BlockChain struct {
 func (b *Block) SetHash() {
 
 	timeStamp := []byte(strconv.FormatInt(b.TimeStamp, 10))
-	payload := bytes.Join([][]byte{b.PrevBlockHask, b.Data, timeStamp}, []byte{})
+	payload := bytes.Join([][]byte{b.PrevBlockHask, []byte(b.Data), timeStamp}, []byte{})
 	hashValue := sha256.Sum256(payload)
 	b.Hash = hashValue[:]
 
@@ -31,7 +31,7 @@ func CreateBlock(data string, prevBlockHask []byte) *Block {
 
 	block := &Block{
 		TimeStamp:     time.Now().Unix(),
-		Data:          []byte(data),
+		Data:          data,
 		PrevBlockHask: prevBlockHask,
 		Hash:          []byte{},
 	}
@@ -51,4 +51,8 @@ func (blockChain *BlockChain) AddBlock(data []byte) {
 
 func CreateInitBlock() *Block {
 	return CreateBlock("firstBlock", []byte{})
+}
+
+func CreateBlockChain() *BlockChain {
+	return &BlockChain{[]*Block{CreateInitBlock()}}
 }

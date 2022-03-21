@@ -30,11 +30,11 @@ func main() {
 			reader := bufio.NewReader(os.Stdin)
 			data, _, _ := reader.ReadLine()
 			NewBlockChain.AddBlock(data)
+			fmt.Println("Success")
 		} else if op == "p" {
-
 			for _, block := range NewBlockChain.Blocks {
 				fmt.Printf("Prev Hash: %x \n", block.PrevBlockHask)
-				fmt.Printf("Data: %x \n", block.Data)
+				fmt.Printf("Data: %s \n", block.Data)
 				fmt.Printf("Hash: %x \n", block.Hash)
 				fmt.Println()
 			}

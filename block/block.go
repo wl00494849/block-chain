@@ -43,9 +43,7 @@ func CreateBlock(data string, prevBlockHask []byte) *Block {
 
 func (blockChain *BlockChain) AddBlock(data []byte) {
 	prevBlock := blockChain.Blocks[len(blockChain.Blocks)-1]
-
 	newBlock := CreateBlock(string(data), prevBlock.Hash)
-
 	blockChain.Blocks = append(blockChain.Blocks, newBlock)
 }
 

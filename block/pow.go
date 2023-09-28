@@ -45,11 +45,11 @@ func (pow *ProofOfWork) Proof() (int, []byte) {
 	n := 0
 
 	fmt.Printf("Mining : %s \n", pow.block.Data)
-
+	var i = 1
 	for n < math.MaxInt64 {
 		data := pow.prepareData(n)
-
 		hash = sha256.Sum256(data)
+		fmt.Println("第", i, "次Hash")
 		fmt.Printf(" %x \n", hash)
 		hasInt.SetBytes(hash[:])
 		if hasInt.Cmp(pow.target) == -1 {
@@ -57,6 +57,7 @@ func (pow *ProofOfWork) Proof() (int, []byte) {
 		} else {
 			n++
 		}
+		i++
 	}
 
 	fmt.Println()

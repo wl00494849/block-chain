@@ -7,7 +7,7 @@ import (
 type Block struct {
 	TimeStamp     int64
 	Data          string
-	PrevBlockHask []byte
+	PrevBlockHash []byte
 	Hash          []byte
 	Nonce         int
 }
@@ -16,12 +16,12 @@ type BlockChain struct {
 	Blocks []*Block
 }
 
-func CreateBlock(data string, prevBlockHask []byte) *Block {
+func CreateBlock(data string, prevBlockHash []byte) *Block {
 
 	block := &Block{
 		TimeStamp:     time.Now().Unix(),
 		Data:          data,
-		PrevBlockHask: prevBlockHask,
+		PrevBlockHash: prevBlockHash,
 		Hash:          []byte{},
 	}
 

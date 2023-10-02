@@ -19,7 +19,6 @@ const targetBit = 12
 func NewProofOfWork(b *Block) *ProofOfWork {
 	target := big.NewInt(1)
 	target.Lsh(target, uint(256-targetBit))
-
 	pow := &ProofOfWork{target, b}
 	return pow
 }
@@ -27,7 +26,7 @@ func NewProofOfWork(b *Block) *ProofOfWork {
 func (pow *ProofOfWork) prepareData(nonce int) []byte {
 	data := bytes.Join(
 		[][]byte{
-			pow.block.PrevBlockHask,
+			pow.block.PrevBlockHash,
 			[]byte(pow.block.Data),
 			[]byte(strconv.FormatInt(pow.block.TimeStamp, 16)),
 			[]byte(strconv.FormatInt(int64(targetBit), 16)),

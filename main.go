@@ -33,7 +33,7 @@ func main() {
 			fmt.Println("Success")
 		} else if op == "p" {
 			for _, block := range NewBlockChain.Blocks {
-				fmt.Printf("Prev Hash: %x \n", block.PrevBlockHask)
+				fmt.Printf("Prev Hash: %x \n", block.PrevBlockHash)
 				fmt.Printf("Data: %s \n", block.Data)
 				fmt.Printf("Hash: %x \n", block.Hash)
 				fmt.Printf("Pow: %t \n", bc.NewProofOfWork(block).Validate())

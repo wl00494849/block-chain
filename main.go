@@ -16,7 +16,7 @@ func help() {
 func main() {
 	fmt.Println("BlockChain Project Test")
 	fmt.Println("Type h for help")
-
+	help()
 	NewBlockChain := bc.CreateBlockChain()
 
 	var op string
@@ -36,7 +36,7 @@ func main() {
 				fmt.Printf("Prev Hash: %x \n", block.PrevBlockHash)
 				fmt.Printf("Data: %s \n", block.Data)
 				fmt.Printf("Hash: %x \n", block.Hash)
-				fmt.Printf("Pow: %t \n", bc.NewProofOfWork(block).Validate())
+				fmt.Printf("Valid: %t \n", bc.NewProofOfWork(block).Validate())
 				fmt.Println()
 			}
 

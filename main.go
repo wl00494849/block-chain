@@ -36,6 +36,7 @@ func main() {
 				fmt.Printf("Prev Hash: %x \n", block.PrevBlockHash)
 				fmt.Printf("Data: %s \n", block.Data)
 				fmt.Printf("Hash: %x \n", block.Hash)
+				fmt.Printf("Nonce: %d \n", block.Nonce)
 				fmt.Printf("Valid: %t \n", bc.NewProofOfWork(block).Validate())
 				fmt.Println()
 			}

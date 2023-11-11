@@ -59,9 +59,9 @@ func (pow *ProofOfWork) Proof() (int, []byte) {
 
 		if hasInt.Cmp(pow.target) == -1 {
 			break
-		} else {
-			n++
 		}
+
+		n++
 		i++
 	}
 	fmt.Println()

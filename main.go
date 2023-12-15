@@ -23,15 +23,16 @@ func main() {
 
 	for true {
 		fmt.Scanln(&op)
-		if op == "h" {
+		switch op {
+		case "h":
 			help()
-		} else if op == "c" {
+		case "c":
 			fmt.Println("Entering your Data")
 			reader := bufio.NewReader(os.Stdin)
 			data, _, _ := reader.ReadLine()
 			NewBlockChain.AddBlock(data)
 			fmt.Println("Success")
-		} else if op == "p" {
+		case "p":
 			for _, block := range NewBlockChain.Blocks {
 				fmt.Printf("Prev Hash: %x \n", block.PrevBlockHash)
 				fmt.Printf("Data: %s \n", block.Data)
@@ -40,10 +41,7 @@ func main() {
 				fmt.Printf("Valid: %t \n", bc.NewProofOfWork(block).Validate())
 				fmt.Println()
 			}
-
-		} else if op == "q" {
-			break
-		} else {
+		default:
 			fmt.Println("Please Enter your option")
 		}
 	}
